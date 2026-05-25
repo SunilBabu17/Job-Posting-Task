@@ -1,0 +1,28 @@
+<div class="">
+  <div>
+    <h2 class="text-3xl">Job Posting Management System</h2>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-2 mt-6 w-2xs border-2 p-4">
+    <fieldset>
+      <legend>Login</legend>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">Email is required</mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">Invalid Email</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">password is required</mat-error>
+    </mat-form-field>
+    <div class="grid grid-cols-2">
+      <button mat-button (click)="onReset()">Reset</button>
+      <button mat-button="filled" type="submit">Submit</button>
+    </div>
+    <div>
+      <p>New User...   <a routerLink="/register" class="text-blue-500">Register</a></p>
+    </div>
+    </fieldset>
+  </form>
+</div>
